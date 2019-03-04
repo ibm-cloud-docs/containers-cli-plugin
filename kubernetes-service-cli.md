@@ -39,7 +39,7 @@ Looking for `{[bxcr]}` commands? See the [{{site.data.keyword.registryshort_notm
 ## Using the beta command structure
 {: #cs_beta}
 
-A redesigned version of the {[pluginname]} is available as a beta. The redesigned {[pluginname]} groups commands into categories and changes commands from the hyphenated structure to a spaced structure.
+A redesigned version of the {[pluginname]} is available as a beta. The redesigned {[pluginname]} groups commands into categories and changes commands from a hyphenated structure to a spaced structure.
 {: shortdesc}
 
 To use the redesigned {[pluginname]}, set the `IKS_BETA_VERSION` environment variable to the beta version that you want to use:
@@ -453,9 +453,9 @@ Switching regions? Use the `{[bxcs]} region-set` [command](#cs_region-set) inste
 {: pre}
 
 ```
-API Endpoint:          https://containers.cloud.ibm.com   
-API Version:           v1   
-Skip SSL Validation:   false   
+API Endpoint:          https://containers.cloud.ibm.com
+API Version:           v1
+Skip SSL Validation:   false
 Region:                us-south
 ```
 {: screen}
@@ -2794,7 +2794,7 @@ Create a logging configuration. You can use this command to forward logs for con
   <dt><code>--cluster <em>CLUSTER</em></code></dt>
     <dd>The name or ID of the cluster.</dd>
 
-  <dt><code>--logsource <em>LOG_SOURCE</em></code></dt>    
+  <dt><code>--logsource <em>LOG_SOURCE</em></code></dt>
     <dd>The log source to enable log forwarding for. This argument supports a comma-separated list of log sources to apply the configuration for. Accepted values are <code>container</code>, <code>application</code>, <code>worker</code>, <code>kubernetes</code>, <code>storage</code>, and <code>ingress</code>, and <code>kube-audit</code>. If you do not provide a log source, configurations are created for <code>container</code> and <code>ingress</code>.</dd>
 
   <dt><code>--type <em>LOG_TYPE</em></code></dt>
@@ -4092,14 +4092,14 @@ View the details of a worker pool.
 **Example output**:
 
   ```
-  Name:               pool   
-  ID:                 a1a11b2222222bb3c33c3d4d44d555e5-f6f777g   
-  State:              active   
-  Hardware:           shared   
-  Zones:              dal10,dal12   
-  Workers per zone:   3   
-  Machine type:       b2c.4x16.encrypted   
-  Labels:             -   
+  Name:               pool
+  ID:                 a1a11b2222222bb3c33c3d4d44d555e5-f6f777g
+  State:              active
+  Hardware:           shared
+  Zones:              dal10,dal12
+  Workers per zone:   3
+  Machine type:       b2c.4x16.encrypted
+  Labels:             -
   Version:            {[kubeversions]}_1512
   ```
   {: screen}
@@ -6675,7 +6675,7 @@ Remove a worker pool from your cluster. All worker nodes in the pool are deleted
 ```
 {: pre}
 
-{[white-space.md]}  
+{[white-space.md]}
 
 ## `zone` commands
 {: #zone}
