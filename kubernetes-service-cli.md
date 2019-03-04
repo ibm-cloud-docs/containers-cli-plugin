@@ -43,6 +43,7 @@ A redesigned version of the {[pluginname]} is available as a beta. The redesigne
 {: shortdesc}
 
 To use the redesigned {[pluginname]}, set the `IKS_BETA_VERSION` environment variable to the beta version that you want to use:
+
 ```
 export IKS_BETA_VERSION=<beta_version>
 ```
