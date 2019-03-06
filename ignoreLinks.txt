@@ -1,0 +1,4 @@
+https://ap-north.containers.cloud.ibm.com,
+https://ap-south.containers.cloud.ibm.com,
+https://eu-central.containers.cloud.ibm.com,
+https://uk-south.containers.cloud.ibm.com,
