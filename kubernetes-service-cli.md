@@ -25,7 +25,7 @@ subcollection: containers
 
 
 # {{site.data.keyword.containerlong_notm}} CLI
-{: #cs_cli_reference}
+{: #kubernetes-service-cli}
 
 Refer to these commands to create and manage Kubernetes clusters in {{site.data.keyword.containerlong}}.
 {:shortdesc}
