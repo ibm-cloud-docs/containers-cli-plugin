@@ -7,5 +7,3 @@ IBM Cloud Kubernetes Service
     {: .navgroup id="reference"}
     kubernetes-service-cli.md 
     {: .navgroup-end}
-    
-    cs_cli_reference.md
