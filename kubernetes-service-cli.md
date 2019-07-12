@@ -2,7 +2,7 @@
 
 copyright:
   years: 2014, 2019
-lastupdated: "2019-07-08"
+lastupdated: "2019-07-11"
 
 keywords: kubernetes, iks, ibmcloud, ic, ks
 
@@ -22,6 +22,7 @@ subcollection: containers
 {:deprecated: .deprecated}
 {:download: .download}
 {:preview: .preview}
+
 
 
 # {{site.data.keyword.containerlong_notm}} CLI
@@ -93,6 +94,7 @@ The following beta versions of the redesigned {{site.data.keyword.containerlong_
     </tr>
   </tbody>
 </table>
+
 
 
 ## ibmcloud ks commands
@@ -256,7 +258,7 @@ ibmcloud plugin list
  <tbody>
    <tr>
      <td>[ibmcloud ks credential-get](#cs_credential_get)</td>
-     <td>[ibmcloud ks credential-set](#cs_credentials_set)</td>
+     <td>[ibmcloud ks credential-set](#cs_credentials_set) (credentials-set)</td>
      <td>[ibmcloud ks credential-unset](#cs_credentials_unset)</td>
      <td>[ibmcloud ks infra-permissions-get](#infra_permissions_get)</td>
    </tr>
@@ -295,14 +297,14 @@ ibmcloud plugin list
       <td>[ibmcloud ks alb-configure](#cs_alb_configure)</td>
     </tr>
     <tr>
-      <td>[ibmcloud ks alb-create](#cs_alb_create)</td>
       <td>[ibmcloud ks alb-get](#cs_alb_get)</td>
       <td>[ibmcloud ks alb-rollback](#cs_alb_rollback)</td>
       <td>[ibmcloud ks alb-types](#cs_alb_types)</td>
+        <td>[ibmcloud ks alb-update](#cs_alb_update)</td>
     </tr>
     <tr>
-      <td>[ibmcloud ks alb-update](#cs_alb_update)</td>
       <td>[ibmcloud ks albs](#cs_albs)</td>
+      <td> </td>
       <td> </td>
       <td> </td>
     </tr>
@@ -363,20 +365,20 @@ ibmcloud plugin list
   </thead>
   <tbody>
     <tr>
-      <td>[Beta: ibmcloud ks nlb-dns-add](#cs_nlb-dns-add)</td>
-      <td>[Beta: ibmcloud ks nlb-dns-create](#cs_nlb-dns-create)</td>
-      <td>[Beta: ibmcloud ks nlb-dns-rm](#cs_nlb-dns-rm)</td>
-      <td>[Beta: ibmcloud ks nlb-dnss](#cs_nlb-dns-ls)</td>
+      <td>[ibmcloud ks nlb-dns-add](#cs_nlb-dns-add)</td>
+      <td>[ibmcloud ks nlb-dns-create](#cs_nlb-dns-create)</td>
+      <td>[ibmcloud ks nlb-dns-rm](#cs_nlb-dns-rm)</td>
+      <td>[ibmcloud ks nlb-dnss](#cs_nlb-dns-ls)</td>
     </tr>
     <tr>
-      <td>[Beta: ibmcloud ks nlb-dns-monitor-configure](#cs_nlb-dns-monitor-configure)</td>
-      <td>[Beta: ibmcloud ks nlb-dns-monitor-disable](#cs_nlb-dns-monitor-disable)</td>
-      <td>[Beta: ibmcloud ks nlb-dns-monitor-enable](#cs_nlb-dns-monitor-enable)</td>
-      <td>[Beta: ibmcloud ks nlb-dns-monitor-get](#cs_nlb-dns-monitor-get)</td>
+      <td>[ibmcloud ks nlb-dns-monitor-configure](#cs_nlb-dns-monitor-configure)</td>
+      <td>[ibmcloud ks nlb-dns-monitor-disable](#cs_nlb-dns-monitor-disable)</td>
+      <td>[ibmcloud ks nlb-dns-monitor-enable](#cs_nlb-dns-monitor-enable)</td>
+      <td>[ibmcloud ks nlb-dns-monitor-get](#cs_nlb-dns-monitor-get)</td>
     </tr>
     <tr>
-      <td>[Beta: ibmcloud ks nlb-dns-monitor-status](#cs_nlb-dns-monitor-status)</td>
-      <td>[Beta: ibmcloud ks nlb-dns-monitors](#cs_nlb-dns-monitor-ls)</td>
+      <td>[ibmcloud ks nlb-dns-monitor-status](#cs_nlb-dns-monitor-status)</td>
+      <td>[ibmcloud ks nlb-dns-monitors](#cs_nlb-dns-monitor-ls)</td>
       <td> </td>
       <td> </td>
     </tr>
@@ -412,6 +414,7 @@ ibmcloud plugin list
 </br>
 
 
+
 <table summary="Worker node commands table">
 <caption>Worker node commands</caption>
 <col width="25%">
@@ -427,7 +430,6 @@ ibmcloud plugin list
       <td>[ibmcloud ks worker-reboot](#cs_worker_reboot)</td>
       <td>[ibmcloud ks worker-reload](#cs_worker_reload)</td>
     </tr>
-    <tr>
       <td>[ibmcloud ks worker-rm](#cs_worker_rm)</td>
       <td>[ibmcloud ks worker-update](#cs_worker_update)</td>
       <td>[ibmcloud ks workers](#cs_workers)</td>
@@ -1106,7 +1108,7 @@ ibmcloud ks cluster-addons --cluster CLUSTER
 ### ibmcloud ks cluster-config
 {: #cs_cluster_config}
 
-After logging in, download Kubernetes configuration data and certificates to connect to your cluster and run `kubectl` commands. The files are downloaded to `user_home_directory/.bluemix/plugins/container-service/clusters/<cluster_name>`.
+After logging in, download Kubernetes configuration data and certificates to connect to your cluster and run `kubectl` commands. The files are downloaded to `user_home_directory/.bluemix/plugins/kubernetes-service/clusters/<cluster_name>`.
 {: shortdesc}
 
 ```
@@ -1124,7 +1126,7 @@ ibmcloud ks cluster-config --cluster CLUSTER [--admin] [--export] [--network] [-
 <dd>The name or ID of the cluster. This value is required.</dd>
 
 <dt><code>--admin</code></dt>
-<dd>Download the TLS certificates and permission files for the Super User role. You can use the certs to automate tasks in a cluster without having to reauthenticate. The files are downloaded to `<user_home_directory>/.bluemix/plugins/container-service/clusters/<cluster_name>-admin`. This value is optional.</dd>
+<dd>Download the TLS certificates and permission files for the Super User role. You can use the certs to automate tasks in a cluster without having to reauthenticate. The files are downloaded to `<user_home_directory>/.bluemix/plugins/kubernetes-service/clusters/<cluster_name>-admin`. This value is optional.</dd>
 
 <dt><code>--network</code></dt>
 <dd>Download the Calico configuration file, TLS certificates, and permission files that are required to run <code>calicoctl</code> commands in your cluster. This value is optional. **Note**: To get the export command for the downloaded Kubernetes configuration data and certificates, you must run this command without this flag.</dd>
@@ -1245,8 +1247,8 @@ diskEncryption: <em>false</em>
 
 <dt><code>--workers WORKER</code></dt>
 <dd>The number of worker nodes that you want to deploy in your cluster. If you do not specify this option, a cluster with one worker node is created. This value is optional for standard clusters and is not available for free clusters.
-<p class="important">If you create a cluster with only one worker node per zone, you might experience issues with Ingress. For high availability, create a cluster with at least two workers per zone.</p>
-<p class="important">Every worker node is assigned a unique worker node ID and domain name that must not be manually changed after the cluster is created. Changing the ID or domain name prevents the Kubernetes master from managing your cluster.</p></dd>
+<p class="important">If you create a cluster with only one worker node per zone, you might experience issues with Ingress. For high availability, create a cluster with at least two workers per zone.</br>
+</br>Every worker node is assigned a unique worker node ID and domain name that must not be manually changed after the cluster is created. Changing the ID or domain name prevents the Kubernetes master from managing your cluster.</p></dd>
 
 <dt><code>--disable-disk-encrypt</code></dt>
 <dd>Worker nodes feature AES 256-bit disk encryption by default; [learn more](/docs/containers?topic=containers-security#encrypted_disk). To disable encryption, include this option.</dd>
@@ -1579,6 +1581,7 @@ ibmcloud ks clusters [--locations LOCATION] [--json] [-s]
 
 **Command options**:
 <dl>
+
 <dt><code>--locations <em>LOCATION</em></code></dt>
 <dd>Filter zones by a specific location or a list of comma-separated locations. To see supported locations, run <code>ibmcloud ks supported-locations</code>.</dd>
 
@@ -2336,13 +2339,13 @@ Enable or disable an ALB in your standard cluster.
 {: shortdesc}
 
 You can use this command to:
-* Enable a default private ALB. When you create a cluster, a default private ALB is created for you in each zone where you have workers and an available private subnet, but the default private ALBs are not enabled. However, all default public ALBs are automatically enabled, and any public or private ALBs that you create with the `ibmcloud ks alb-create` command are enabled by default too.
+* Enable a default private ALB. When you create a cluster, a default private ALB is created for you in each zone where you have workers and an available private subnet, but the default private ALBs are not enabled. However, all default public ALBs are automatically enabled.
 * Enable an ALB that you previously disabled.
-* Disable an ALB on an old VLAN after you create an ALB on a new VLAN. For more information, see [Moving ALBs across VLANs](/docs/containers?topic=containers-ingress-settings#migrate-alb-vlan).
+* Disable an ALB.
 * Disable the IBM-provided ALB deployment so that you can deploy your own Ingress controller and leverage the DNS registration for the IBM-provided Ingress subdomain or the load balancer service that is used to expose the Ingress controller.
 
 ```
-ibmcloud ks alb-configure --albID ALB_ID [--enable] [--user-ip USER_IP] [--disable] [--disable-deployment] [-s]
+ibmcloud ks alb-configure --albID ALB_ID --disable|--enable [--user-ip USER_IP]|--disable-deployment [-s]
 ```
 {: pre}
 
@@ -2350,20 +2353,20 @@ ibmcloud ks alb-configure --albID ALB_ID [--enable] [--user-ip USER_IP] [--disab
 
 **Command options**:
 <dl>
-<dt><code><em>--albID </em>ALB_ID</code></dt>
-<dd>The ID for an ALB. Run <code>ibmcloud ks albs <em>--cluster </em>CLUSTER</code> to view the IDs for the ALBs in a cluster. This value is required.</dd>
-
-<dt><code>--enable</code></dt>
-<dd>Include this flag to enable an ALB in a cluster.</dd>
+<dt><code>--albID <em>ALB_ID</em></code></dt>
+<dd>The ID for an ALB. To view the IDs for the ALBs in a cluster, run <code>ibmcloud ks albs --cluster <em>CLUSTER</em></code>. This value is required.</dd>
 
 <dt><code>--disable</code></dt>
 <dd>Include this flag to disable an ALB in a cluster. <p class="note">If you disable an ALB, the IP address that the ALB used goes back into the pool of available portable IPs so that another service can use the IP. If you later try to re-enable the ALB, the ALB might report an error if the IP address it previously used is now in use by another service. You can either stop running the other service or specify another IP address to use when you re-enable the ALB.</p></dd>
 
-<dt><code>--disable-deployment</code></dt>
-<dd>Include this flag to disable the IBM-provided ALB deployment. This flag doesn't remove the DNS registration for the IBM-provided Ingress subdomain or the load balancer service that is used to expose the Ingress controller.</dd>
+<dt><code>--enable</code></dt>
+<dd>Include this flag to enable an ALB in a cluster.</dd>
 
 <dt><code>--user-ip <em>USER_IP</em></code></dt>
 <dd>Optional: If you enable the ALB with the <code>--enable</code> flag, you can specify an IP address that is on a VLAN in the zone that the ALB was created in. The ALB is enabled with and uses this public or private IP address. <strong>Note</strong>: This IP address must not be in use by another load balancer or ALB in the cluster. If no IP address is provided, the ALB is deployed with a public or private IP address from the portable public or private subnet that was provisioned automatically when you created the cluster, or the public or private IP address that you previously assigned to the ALB.</dd>
+
+<dt><code>--disable-deployment</code></dt>
+<dd>Include this flag to disable the IBM-provided ALB deployment. This flag doesn't remove the DNS registration for the IBM-provided Ingress subdomain or the load balancer service that is used to expose the Ingress controller.</dd>
 
 <dt><code>-s</code></dt>
 <dd>Do not show the message of the day or update reminders. This value is optional.</dd>
@@ -2391,14 +2394,23 @@ ibmcloud ks alb-configure --albID public-cr18a61a63a6a94b658596aa93a087aaa9-alb1
 
 </br>
 
-### ibmcloud ks alb-create
-{: #cs_alb_create}
+### ibmcloud ks alb-configure-vpc-classic
+{: #cli_alb-configure-vpc-classic2}
 
-Create a public or private ALB in a zone. The ALB that you create is enabled by default.
+Enable or disable an ALB in a VPC on Classic cluster.
 {: shortdesc}
 
+<img src="images/icon-vpc.png" alt="VPC infrastructure provider icon" width="25" style="width:25px; border-style: none"/> VPC-only command. For classic clusters, use the [`ibmcloud ks alb-configure-classic` command](#cli_alb-configure) instead.
+{: note}
+
+You can use this command to:
+* Enable a default private ALB. When you create a cluster, a default private ALB is created for you in each zone where you have worker nodes, but the default private ALBs are not enabled. However, all default public ALBs are automatically enabled, and any public or private ALBs that you create with the `ibmcloud ks alb-create` command are enabled by default too.
+* Enable an ALB that you previously disabled.
+* Disable an ALB.
+* Disable the IBM-provided ALB deployment so that you can deploy your own Ingress controller and leverage the IBM-provided Ingress subdomain for your cluster.
+
 ```
-ibmcloud ks alb-create --cluster CLUSTER --type PUBLIC|PRIVATE --zone ZONE --vlan VLAN_ID [--user-ip IP] [-s]
+ibmcloud ks alb-configure-vpc-classic --albID ALB_ID --enable|--disable|--disable-deployment [-s]
 ```
 {: pre}
 
@@ -2406,28 +2418,33 @@ ibmcloud ks alb-create --cluster CLUSTER --type PUBLIC|PRIVATE --zone ZONE --vla
 
 **Command options**:
 <dl>
-<dt><code>--cluster <em>CLUSTER</em></code></dt>
-<dd>The name or ID of the cluster.</dd>
+<dt><code>--albID <em>ALB_ID</em></code></dt>
+<dd>The ID for an ALB. To view the IDs for the ALBs in a cluster, run <code>ibmcloud ks albs --cluster <em>CLUSTER</em></code>. This value is required.</dd>
 
-<dt><code>--type<em> PUBLIC|PRIVATE</em></code></dt>
-<dd>The type of ALB: <code>public</code> or <code>private</code>.</dd>
+<dt><code>--enable</code></dt>
+<dd>Include this flag to enable an ALB in a cluster.</dd>
 
-<dt><code>--zone <em>ZONE</em></code></dt>
-<dd>The zone to create the ALB in.</dd>
+<dt><code>--disable</code></dt>
+<dd>Include this flag to disable an ALB in a cluster.</dd>
 
-<dt><code>--vlan <em>VLAN_ID</em></code></dt>
-<dd>The ID of the VLAN to create the ALB on. This VLAN must match the ALB <code>type</code> and must be in the same <code>zone</code> as the ALB that you want to create.</dd>
-
-<dt><code>--user-ip <em>IP</em></code></dt>
-<dd>Optional: An IP address to assign to the ALB. This IP must be on the <code>vlan</code> that you specified and must be in the same <code>zone</code> as the ALB that you want to create. This IP address must not be in use by another load balancer or ALB in the cluster.</dd>
+<dt><code>--disable-deployment</code></dt>
+<dd>Include this flag to disable the IBM-provided ALB deployment. This flag doesn't remove the DNS registration for the IBM-provided Ingress subdomain or the load balancer service that is used to expose the Ingress controller.</dd>
 
 <dt><code>-s</code></dt>
 <dd>Do not show the message of the day or update reminders. This value is optional.</dd>
 </dl>
 
-**Example**:
+**Examples**:
+
+Example for enabling an ALB:
 ```
-ibmcloud ks alb-create --cluster mycluster --type public --zone dal10 --vlan 2234945 --user-ip 1.1.1.1
+ibmcloud ks alb-configure-vpc-classic --albID private-cr18a61a63a6a94b658596aa93a087aaa9-alb1 --enable
+```
+{: pre}
+
+Example for disabling an ALB:
+```
+ibmcloud ks alb-configure-vpc-classic --albID public-cr18a61a63a6a94b658596aa93a087aaa9-alb1 --disable
 ```
 {: pre}
 
@@ -2448,8 +2465,8 @@ ibmcloud ks alb-get --albID ALB_ID [--json] [-s]
 
 **Command options**:
 <dl>
-<dt><code><em>--albID </em>ALB_ID</code></dt>
-<dd>The ID for an ALB. Run <code>ibmcloud ks albs --cluster <em>CLUSTER</em></code> to view the IDs for the ALBs in a cluster. This value is required.</dd>
+<dt><code>--albID <em>ALB_ID</em></code></dt>
+<dd>The ID for an ALB. To view the IDs for the ALBs in a cluster, run <code>ibmcloud ks albs --cluster <em>CLUSTER</em></code>. This value is required.</dd>
 
 <dt><code>--json</code></dt>
 <dd>Prints the command output in JSON format. This value is optional.</dd>
@@ -2569,6 +2586,8 @@ ibmcloud ks albs --cluster my_cluster
 If you set up your {{site.data.keyword.cloud_notm}} account to use different credentials to access the IBM Cloud infrastructure (SoftLayer) portfolio, get the infrastructure user name for the region and resource group that you are currently targeted to.
 {: shortdesc}
 
+
+
 ```
 ibmcloud ks credential-get --region REGION [-s] [--json]
 ```
@@ -2595,11 +2614,13 @@ ibmcloud ks credential-get --region us-south
 {: pre}
 
 </br>
-### ibmcloud ks credential-set
+### ibmcloud ks credential-set (credentials-set)
 {: #cs_credentials_set}
 
 Set credentials for a resource group and region so that you can access the IBM Cloud infrastructure (SoftLayer) portfolio through your {{site.data.keyword.cloud_notm}} account.
 {: shortdesc}
+
+
 
 If you have an {{site.data.keyword.cloud_notm}} Pay-As-You-Go account, you have access to the IBM Cloud infrastructure (SoftLayer) portfolio by default. However, you might want to use a different IBM Cloud infrastructure (SoftLayer) account that you already have to order infrastructure. You can link this infrastructure account to your {{site.data.keyword.cloud_notm}} account by using this command.
 
@@ -2646,6 +2667,8 @@ Remove the credentials for a resource group and region to remove access to the I
 {: shortdesc}
 
 After you remove the credentials, the [{{site.data.keyword.cloud_notm}} IAM API key](#cs_api_key_info) is used to order resources in IBM Cloud infrastructure (SoftLayer).
+
+
 
 ```
 ibmcloud ks credential-unset --region REGION [-s]
@@ -2745,6 +2768,7 @@ Manage Storage    required
 
 
 </br>
+
 ### ibmcloud ks machine-types
 {: #cs_machine_types}
 
@@ -2787,8 +2811,7 @@ ibmcloud ks machine-types --zone dal10
 View the VLAN spanning status for an IBM Cloud infrastructure (SoftLayer) account. VLAN spanning enables all devices on an account to communicate with each other through the private network, regardless of its assigned VLAN.
 {: shortdesc}
 
-The VLAN spanning option is disabled for clusters that are created in a VRF-enabled account. When VRF is enabled, all VLANs in the account can automatically communicate with each other over the private network. For more information, see [Planning your cluster network setup: Worker-to-worker communication](/docs/containers?topic=containers-plan_clusters#worker-worker).
-{: note}
+<p class="note">The VLAN spanning option is disabled for clusters that are created in a VRF-enabled account. When VRF is enabled, all VLANs in the account can automatically communicate with each other over the private network. For more information, see [Planning your cluster network setup: Worker-to-worker communication](/docs/containers?topic=containers-plan_clusters#worker-worker).</br></br></p>
 
 ```
 ibmcloud ks vlan-spanning-get --region REGION [--json] [-s]
@@ -3492,7 +3515,7 @@ ibmcloud ks logging-filter-update --cluster example-cluster --id 274885 --type a
 Use this group of commands to create and manage host names for network load balancer (NLB) IP addresses and health check monitors for host names. For more information, see [Registering a load balancer host name](/docs/containers?topic=containers-loadbalancer_hostname).
 {: shortdesc}
 
-### Beta: ibmcloud ks nlb-dns-add
+### ibmcloud ks nlb-dns-add
 {: #cs_nlb-dns-add}
 
 Add a network load balancer (NLB) IP to an existing host name that you created with the [`ibmcloud ks nlb-dns-create` command](#cs_nlb-dns-create).
@@ -3532,7 +3555,7 @@ ibmcloud ks nlb-dns-add --cluster mycluster --ip 1.1.1.1 --nlb-host mycluster-a1
 {: pre}
 
 </br>
-### Beta: ibmcloud ks nlb-dns-create
+### ibmcloud ks nlb-dns-create
 {: #cs_nlb-dns-create}
 
 Publicly expose your app by creating a DNS host name to register a network load balancer (NLB) IP.
@@ -3605,7 +3628,7 @@ ibmcloud ks nlb-dns-rm --cluster mycluster --ip 1.1.1.1 --nlb-host mycluster-a1b
 {: pre}
 
 </br>
-### Beta: ibmcloud ks nlb-dnss
+### ibmcloud ks nlb-dnss
 {: #cs_nlb-dns-ls}
 
 List the network load balancer host names and IP addresses that are registered in a cluster.
@@ -3637,7 +3660,7 @@ ibmcloud ks nlb-dnss --cluster mycluster
 {: pre}
 
 </br>
-### Beta: ibmcloud ks nlb-dns-monitor-configure
+### ibmcloud ks nlb-dns-monitor-configure
 {: #cs_nlb-dns-monitor-configure}
 
 Configure and optionally enable a health check monitor for an existing NLB host name in a cluster. When you enable a monitor for your host name, the monitor health checks the NLB IP in each zone and keeps the DNS lookup results updated based on these health checks.
@@ -3716,42 +3739,7 @@ ibmcloud ks nlb-dns-monitor-configure --cluster mycluster --nlb-host mycluster-a
 {: pre}
 
 </br>
-### Beta: ibmcloud ks nlb-dns-monitor-get
-{: #cs_nlb-dns-monitor-get}
-
-View the settings for an existing health check monitor.
-{: shortdesc}
-
-```
-ibmcloud ks nlb-dns-monitor-get --cluster CLUSTER --nlb-host HOST_NAME [--json] [-s]
-```
-{: pre}
-
-**Minimum required permissions**: **Editor** platform role for the cluster in {{site.data.keyword.containerlong_notm}}
-
-**Command options**:
-<dl>
-<dt><code>--cluster <em>CLUSTER</em></code></dt>
-<dd>The name or ID of the cluster. This value is required.</dd>
-
-<dt><code>--nlb-host <em>HOST_NAME</em></code></dt>
-<dd>The host name that the monitor health checks. To list host names, run <code>ibmcloud ks nlb-dnss --cluster CLUSTER</code>.</dd>
-
-<dt><code>--json</code></dt>
-<dd>Prints the command output in JSON format. This value is optional.</dd>
-
-<dt><code>-s</code></dt>
-<dd>Do not show the message of the day or update reminders. This value is optional.</dd>
-</dl>
-
-**Example**:
-```
-ibmcloud ks nlb-dns-monitor-get --cluster mycluster --nlb-host mycluster-a1b2cdef345678g9hi012j3kl4567890-0001.us-south.containers.appdomain.cloud
-```
-{: pre}
-
-</br>
-### Beta: ibmcloud ks nlb-dns-monitor-disable
+### ibmcloud ks nlb-dns-monitor-disable
 {: #cs_nlb-dns-monitor-disable}
 
 Disable an existing health check monitor for a host name in a cluster.
@@ -3786,7 +3774,7 @@ ibmcloud ks nlb-dns-monitor-disable --cluster mycluster --nlb-host mycluster-a1b
 {: pre}
 
 </br>
-### Beta: ibmcloud ks nlb-dns-monitor-enable
+### ibmcloud ks nlb-dns-monitor-enable
 {: #cs_nlb-dns-monitor-enable}
 
 Enable a health check monitor that you configured.
@@ -3823,7 +3811,44 @@ ibmcloud ks nlb-dns-monitor-enable --cluster mycluster --nlb-host mycluster-a1b2
 {: pre}
 
 </br>
-### Beta: ibmcloud ks nlb-dns-monitor-status
+
+### ibmcloud ks nlb-dns-monitor-get
+{: #cs_nlb-dns-monitor-get}
+
+View the settings for an existing health check monitor.
+{: shortdesc}
+
+```
+ibmcloud ks nlb-dns-monitor-get --cluster CLUSTER --nlb-host HOST_NAME [--json] [-s]
+```
+{: pre}
+
+**Minimum required permissions**: **Editor** platform role for the cluster in {{site.data.keyword.containerlong_notm}}
+
+**Command options**:
+<dl>
+<dt><code>--cluster <em>CLUSTER</em></code></dt>
+<dd>The name or ID of the cluster. This value is required.</dd>
+
+<dt><code>--nlb-host <em>HOST_NAME</em></code></dt>
+<dd>The host name that the monitor health checks. To list host names, run <code>ibmcloud ks nlb-dnss --cluster CLUSTER</code>.</dd>
+
+<dt><code>--json</code></dt>
+<dd>Prints the command output in JSON format. This value is optional.</dd>
+
+<dt><code>-s</code></dt>
+<dd>Do not show the message of the day or update reminders. This value is optional.</dd>
+</dl>
+
+**Example**:
+```
+ibmcloud ks nlb-dns-monitor-get --cluster mycluster --nlb-host mycluster-a1b2cdef345678g9hi012j3kl4567890-0001.us-south.containers.appdomain.cloud
+```
+{: pre}
+
+</br>
+
+### ibmcloud ks nlb-dns-monitor-status
 {: #cs_nlb-dns-monitor-status}
 
 List the health check status for the IPs behind NLB host names in a cluster.
@@ -3858,7 +3883,7 @@ ibmcloud ks nlb-dns-monitor-status --cluster mycluster
 {: pre}
 
 </br>
-### Beta: ibmcloud ks nlb-dns-monitors
+### ibmcloud ks nlb-dns-monitors
 {: #cs_nlb-dns-monitor-ls}
 
 List the health check monitor settings for each NLB host name in a cluster.
@@ -4145,7 +4170,7 @@ View the details of a worker node.
 {: shortdesc}
 
 ```
-ibmcloud ks worker-get --cluster [CLUSTER_NAME_OR_ID] --worker WORKER_NODE_ID [--json] [-s]
+ibmcloud ks worker-get --cluster CLUSTER_NAME_OR_ID --worker WORKER_NODE_ID [--json] [-s]
 ```
 {: pre}
 
@@ -4324,7 +4349,7 @@ Before you reload your worker node, make sure that pods are rescheduled on other
 
 
 ```
-ibmcloud ks worker-reload [-f] --cluster CLUSTER --workers WORKER [WORKER] [--skip-master-healthcheck] [-s]
+ibmcloud ks worker-reload --cluster CLUSTER --workers WORKER [WORKER] [--skip-master-healthcheck] [-f] [-s]
 ```
 {: pre}
 
@@ -4335,14 +4360,14 @@ ibmcloud ks worker-reload [-f] --cluster CLUSTER --workers WORKER [WORKER] [--sk
 <dt><code>--cluster <em>CLUSTER</em></code></dt>
 <dd>The name or ID of the cluster. This value is required.</dd>
 
-<dt><code>-f</code></dt>
-<dd>Use this option to force the reload of a worker node without user prompts. This value is optional.</dd>
-
 <dt><code>--worker <em>WORKER</em></code></dt>
 <dd>The name or ID of one or more worker nodes. Use a space to list multiple worker nodes. This value is required.</dd>
 
 <dt><code>--skip-master-healthcheck</code></dt>
 <dd>Skip a health check of your master before reloading or rebooting your worker nodes.</dd>
+
+<dt><code>-f</code></dt>
+<dd>Use this option to force the reload of a worker node without user prompts. This value is optional.</dd>
 
 <dt><code>-s</code></dt>
 <dd>Do not show the message of the day or update reminders. This value is optional.</dd>
@@ -4355,6 +4380,8 @@ ibmcloud ks worker-reload --cluster my_cluster --workers kube-dal10-cr18a61a63a6
 {: pre}
 
 </br>
+
+
 ### ibmcloud ks worker-rm
 {: #cs_worker_rm}
 
@@ -4880,7 +4907,7 @@ ibmcloud ks zone-rm --zone ZONE --cluster CLUSTER [-f] [-s]
 **Command options**:
 <dl>
 <dt><code>--zone <em>ZONE</em></code></dt>
-<dd>The zone that you want to add. It must be a [multizone-capable zone](/docs/containers?topic=containers-regions-and-zones#zones) within the cluster's region. This value is required.</dd>
+<dd>The zone that you want to remove. This value is required.</dd>
 
 <dt><code>--cluster <em>CLUSTER</em></code></dt>
 <dd>The name or ID of the cluster. This value is required.</dd>
@@ -4897,5 +4924,3 @@ ibmcloud ks zone-rm --zone ZONE --cluster CLUSTER [-f] [-s]
 ibmcloud ks zone-rm --zone dal10 --cluster my_cluster
 ```
 {: pre}
-
-
