@@ -2,7 +2,7 @@
 
 copyright:
   years: 2014, 2019
-lastupdated: "2019-07-15"
+lastupdated: "2019-07-16"
 
 keywords: kubernetes, iks, ibmcloud, ic, ks
 
@@ -59,6 +59,7 @@ The following beta versions of the redesigned {{site.data.keyword.containerlong_
     {: pre}
 
 </br>
+
 <table>
 <caption>Beta versions of the redesigned {{site.data.keyword.containerlong_notm}} plug-in</caption>
   <thead>
@@ -2415,6 +2416,7 @@ ibmcloud ks alb-get --albID ALB_ID [--json] [-s]
 <dl>
 <dt><code>--albID <em>ALB_ID</em></code></dt>
 <dd>The ID for an ALB. To view the IDs for the ALBs in a cluster, run <code>ibmcloud ks albs --cluster <em>CLUSTER</em></code>. This value is required.</dd>
+
 <dt><code>--json</code></dt>
 <dd>Prints the command output in JSON format. This value is optional.</dd>
 
