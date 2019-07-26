@@ -2,9 +2,9 @@
 
 copyright:
   years: 2014, 2019
-lastupdated: "2019-07-25"
+lastupdated: "2019-07-26"
 
-keywords: kubernetes, iks, ibmcloud, ic, ks
+keywords: kubernetes, iks, ibmcloud, ic, ks, ibmcloud ks
 
 subcollection: containers
 
@@ -23,12 +23,10 @@ subcollection: containers
 {:download: .download}
 {:preview: .preview}
 
-
-
 # {{site.data.keyword.containerlong_notm}} CLI
 {: #kubernetes-service-cli}
 
-Refer to these commands to create and manage community Kubernetes or OpenShift clusters in {{site.data.keyword.containerlong}}.
+Refer to these commands to create and manage **both community Kubernetes or OpenShift clusters** in {{site.data.keyword.containerlong}}.
 {:shortdesc}
 
 * **Community Kubernetes**: [Install the CLI plug-in](/docs/containers?topic=containers-cs_cli_install#cs_cli_install_steps), which uses the `ibmcloud ks` alias.
@@ -38,7 +36,6 @@ In the terminal, you are notified when updates to the `ibmcloud` CLI and plug-in
 
 Looking for `ibmcloud cr` commands? See the [{{site.data.keyword.registryshort_notm}} CLI reference](/docs/services/Registry?topic=container-registry-cli-plugin-containerregcli). Looking for `kubectl` commands? See the [Kubernetes documentation ![External link icon](../icons/launch-glyph.svg "External link icon")](https://kubectl.docs.kubernetes.io/).
 {:tip}
-
 
 ## Using the beta {{site.data.keyword.containerlong_notm}} plug-in
 {: #cs_beta}
@@ -702,7 +699,7 @@ diskEncryption: <em>false</em>
 </dd>
 
 <dt><code>--kube-version <em>MAJOR.MINOR.PATCH</em></code></dt>
-<dd>The Kubernetes version for the cluster master node. This value is optional. When the version is not specified, the cluster is created with the default of supported Kubernetes versions. To see available versions, run <code>ibmcloud ks versions</code>.
+<dd>The Kubernetes version for the cluster master node. This value is optional. When the version is not specified, the cluster is created with the default of supported Kubernetes versions. To see available versions, run <code><containers>ibmcloud ks</containers><openshift>ibmcloud oc</openshift> versions</code>.
 </dd>
 
 <dt><code>--no-subnet</code></dt>
@@ -4696,3 +4693,5 @@ ibmcloud ks zone-rm --zone ZONE --cluster CLUSTER [-f] [-s]
 ibmcloud ks zone-rm --zone dal10 --cluster my_cluster
 ```
 {: pre}
+
+
