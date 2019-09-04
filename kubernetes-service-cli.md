@@ -2,7 +2,7 @@
 
 copyright:
   years: 2014, 2019
-lastupdated: "2019-09-03"
+lastupdated: "2019-09-04"
 
 keywords: kubernetes, iks, ibmcloud, ic, ks, ibmcloud ks, ibmcloud oc, oc
 
@@ -208,12 +208,7 @@ With the release of the [{{site.data.keyword.containerlong_notm}} version 2 API]
 ## `ibmcloud ks` commands
 {: #map}
 
-<p>
-<figure>
- <img src="images/cs_cli_ref_imagemap.png" alt="Image of the structure and groupings of commands in {{site.data.keyword.containerlong_notm}} plug-in">
- <figcaption>Overview of commands in {{site.data.keyword.containerlong_notm}} plug-in</figcaption>
-</figure>
-</p>
+![Image of the structure and groupings of commands in {{site.data.keyword.containerlong_notm}} plug-in](images/cs_cli_ref_imagemap.png)
 
 ## `cluster` commands
 {: #cluster}
