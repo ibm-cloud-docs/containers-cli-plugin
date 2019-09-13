@@ -1,1 +1,1 @@
-# containers-cli-plugin
+# IBM Cloud Kubernetes Service CLI
