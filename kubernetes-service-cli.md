@@ -2,7 +2,7 @@
 
 copyright:
   years: 2014, 2019
-lastupdated: "2019-10-14"
+lastupdated: "2019-10-17"
 
 keywords: kubernetes, iks, ibmcloud, ic, ks, ibmcloud ks, ibmcloud oc, oc
 
@@ -125,6 +125,7 @@ Check out the following changes between each version of the CLI plug-in:
 </table>
 
 <br />
+
 
 
 
@@ -4297,7 +4298,7 @@ ibmcloud ks nlb-dns create vpc-classic --cluster CLUSTER --lb-host VPC_LB_HOSTNA
 <dt><code>--secret-namespace <em>NAMESPACE</em></code></dt>
 <dd>The Kubernetes namespace where you want to create the Kubernetes secret that holds the SSL certificate information for the NLB. If you do not specify a namespace, the secret is automatically created in the <code>default</code> namespace.</dd>
 
-<dt><code>--type <em>(public|private}</em></code></dt>
+<dt><code>--type <em>(public|private)</em></code></dt>
 <dd>The subdomain type. </dd>
 
 <dt><code>--json</code></dt>
