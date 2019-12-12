@@ -2,7 +2,7 @@
 
 copyright:
   years: 2014, 2019
-lastupdated: "2019-12-10"
+lastupdated: "2019-12-11"
 
 keywords: kubernetes, iks, ibmcloud, ic, ks, ibmcloud ks, ibmcloud oc, oc
 
@@ -519,7 +519,7 @@ ibmcloud ks cluster addon enable istio-extras --cluster CLUSTER [--version VERSI
 Enable the managed Istio BookInfo add-on. Deploys the [BookInfo sample application for Istio ![External link icon](../icons/launch-glyph.svg "External link icon")](https://istio.io/docs/examples/bookinfo/) into the <code>default</code> namespace.
 {: shortdesc}
 
-This add-on is supported only in Kubernetes version 1.15 and earlier clusters. In Kubernetes version 1.16 and later clusters, you can [manually install BookInfo](/docs/containers?topic=containers-istio#bookinfo_setup).
+This add-on is supported only in Kubernetes version 1.15 and earlier clusters. In Kubernetes version 1.16 and later clusters, you can [manually install BookInfo](/docs/containers?topic=containers-istio-mesh#bookinfo_setup).
 {: note}
 
 ```
@@ -2331,7 +2331,7 @@ You can create a worker pool in your cluster. When you add a worker pool, it is 
 {: shortdesc}
 
 ```
-ibmcloud ks worker-pool create classic --name POOL_NAME --cluster CLUSTER --machine-type FLAVOR --size-per-zone WORKERS_PER_ZONE --hardware ISOLATION [--disable-disk-encrypt] [--label KEY1=VALUE1] [-s] [--json]
+ibmcloud ks worker-pool create classic --name POOL_NAME --cluster CLUSTER --machine-type FLAVOR --size-per-zone WORKERS_PER_ZONE --hardware ISOLATION [--disable-disk-encrypt] [--label KEY1=VALUE1]  [-s] [--json]
 ```
 {: pre}
 
@@ -5074,7 +5074,7 @@ ibmcloud ks credential get --region us-south
 
 </br>
 
-### `ibmcloud ks credential set`
+### `ibmcloud ks credential set classic`
 {: #cs_credentials_set}
 
 Set credentials for a resource group and region so that you can access the IBM Cloud infrastructure portfolio through your {{site.data.keyword.cloud_notm}} account.
@@ -5090,7 +5090,7 @@ Before you use this command, make sure that the user whose credentials are used 
 {: important}
 
 ```
-ibmcloud ks credential set --infrastructure-api-key API_KEY --infrastructure-username USERNAME --region REGION [-s]
+ibmcloud ks credential set classic --infrastructure-api-key API_KEY --infrastructure-username USERNAME [--region REGION] [-s]
 ```
 {: pre}
 
@@ -5115,7 +5115,7 @@ ibmcloud ks credential set --infrastructure-api-key API_KEY --infrastructure-use
 
 **Example**:
 ```
-ibmcloud ks credential set --infrastructure-api-key <api_key> --infrastructure-username dbmanager --region us-south
+ibmcloud ks credential set classic --infrastructure-api-key <api_key> --infrastructure-username dbmanager --region us-south
 ```
 {: pre}
 
