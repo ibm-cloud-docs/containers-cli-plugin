@@ -2,7 +2,7 @@
 
 copyright:
   years: 2014, 2020
-lastupdated: "2020-08-17"
+lastupdated: "2020-08-24"
 
 keywords: kubernetes, iks, ibmcloud, ic, ks, ibmcloud ks, ibmcloud oc, oc
 
@@ -910,6 +910,51 @@ ibmcloud ks cluster create classic --zone dal10 --public-vlan my_public_VLAN_ID 
 </br>
 
 
+### Beta: `ibmcloud ks cluster create satellite`
+{: #cli_cluster-create-satellite}
+
+Create an {{site.data.keyword.satellitelong_notm}} cluster on your own infrastructure that you add to a {{site.data.keyword.satelliteshort}} location as hosts. The hosts are used as worker nodes in your {{site.data.keyword.satelliteshort}} cluster.
+{: shortdesc}
+
+{{site.data.keyword.satellitelong_notm}} is available as a closed beta and is subject to change. To register for the beta, see the [product details page](https://cloud.ibm.com/satellite/beta){: external}.
+{: beta}
+
+Before you begin, create a {{site.data.keyword.satelliteshort}} and assign at least 3 hosts to the location for control plane operations. After you create a {{site.data.keyword.satelliteshort}} cluster, assign hosts for the worker nodes. For more information, see [Creating {{site.data.keyword.openshiftshort}} clusters in {{site.data.keyword.satelliteshort}}](/docs/openshift?topic=openshift-satellite-clusters#satcluster-create-cli).
+
+```
+ibmcloud ks cluster create satellite --location LOCATION --name NAME --version VERSION [-q]
+```
+{: pre}
+
+</br>
+
+**Minimum required permissions**: {{site.data.keyword.cloud_notm}} IAM **Administrator** platform role for {{site.data.keyword.satelliteshort}}.
+
+**Command options:**
+
+<dl>
+
+<dt><code>--location <em>LOCATION</em></code></dt>
+<dd>Required. Enter the ID or name of the location that you want to remove. To retrieve the location ID or name, run <code>ibmcloud sat location ls</code>.</dd>
+
+<dt><code>--name <em>NAME</em></code></dt>
+<dd>Required. Enter a name for your cluster. The name must start with a letter, can contain letters, numbers, and hyphen (-), and must be 35 characters or fewer.</dd>
+
+<dt><code>--version <em>VERSION</em></code></dt>
+<dd>Required. Enter the {{site.data.keyword.openshiftlong_notm}} version that you want to run in your cluster. For a list of supported versions, run <code>ibmcloud ks versions</code>.</dd>
+
+<dt><code>-q</code></dt>
+<dd>Do not show the message of the day or update reminders. This value is optional.</dd>
+
+</dl>
+
+**Example:**
+```
+ibmcloud sat cluster create satellite --name mysatcluster --location mylocation --version 4.3_openshift
+```
+{: pre}
+
+<br />
 
 
 
@@ -2081,6 +2126,7 @@ Before you reboot your worker node, make sure that pods are rescheduled on other
    kubectl get nodes
    ```
    {: pre}
+
    The **name** that is returned in this command is the private IP address that is assigned to your worker node. You can find more information about your worker node when you run the `ibmcloud ks worker ls --cluster <cluster_name_or_ID>` command and look for the worker node with the same **Private IP** address.
 
 2. Force pods to be removed from your worker node and rescheduled onto remaining worker nodes in the cluster. The worker node is also cordoned, or marked as unavailable for future pod scheduling. Replace `<worker_name>` with the private IP address of the worker node that you previously retrieved.
@@ -2161,6 +2207,8 @@ Before you reload your worker node, make sure that pods are rescheduled on other
    ```
    kubectl get nodes
    ```
+   {: pre}
+
    The **name** that is returned in this command is the private IP address that is assigned to your worker node. You can find more information about your worker node when you run the `ibmcloud ks worker ls --cluster <cluster_name_or_ID>` command and look for the worker node with the same **Private IP** address.
 
 2. Reload the worker node. As part of the reload process, the pods that run on the worker node are drained and rescheduled onto remaining worker nodes in the cluster. The worker node is also cordoned, or marked as unavailable for future pod scheduling. Use the worker node ID that is returned from the `ibmcloud ks worker ls --cluster <cluster_name_or_ID>` command.
@@ -2229,6 +2277,7 @@ Before you begin, make sure that your cluster has enough other worker nodes so t
    kubectl get nodes
    ```
    {: pre}
+
    The **name** that is returned in this command is the private IP address that is assigned to your worker node. You can find more information about your worker node when you run the `ibmcloud ks worker ls --cluster <cluster_name_or_ID>` command and look for the worker node with the same **Private IP** address.
 
 2. Replace the worker node. As part of the replace process, the pods that run on the worker node are drained and rescheduled onto remaining worker nodes in the cluster. The worker node is also cordoned, or marked as unavailable for future pod scheduling. Use the worker node ID that is returned from the `ibmcloud ks worker ls --cluster <cluster_name_or_ID>` command.
