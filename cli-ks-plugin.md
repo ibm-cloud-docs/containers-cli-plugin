@@ -1073,6 +1073,43 @@ After a subnet is removed, any requests that originate from this subnet to the c
 ```
 {: pre}
 
+### ` cluster master private-service-endpoint disable`
+{: #cs_cluster_master_pse_disable}
+
+Disable the [private cloud service endpoint](/docs/containers?topic=containers-plan_clusters#workeruser-master) to remove private accessibility to your cluster master. 
+{: shortdesc} 
+
+**Important**: Before you disable the private endpoint, you first must complete the following steps to enable the public cloud service endpoint:
+1. Enable the public cloud service endpoint by running ` cluster master public-service-endpoint enable --cluster <cluster_name>`.
+2. Follow the prompt in the CLI to refresh the Kubernetes master API server.
+3. [Reload all of the worker nodes in your cluster to pick up the public endpoint configuration.](#cs_worker_reload)
+
+```sh
+ cluster master private-service-endpoint disable --cluster CLUSTER [-f] [-q] [-y] 
+```
+{: pre}
+
+**Supported infrastructure provider**: ![Classic infrastructure provider icon.](images/icon-classic-2.svg) Classic. 
+
+**Minimum required permissions**: **Administrator** platform access role for the cluster in {{site.data.keyword.containerlong_notm}}
+
+**Command options**:
+
+`-f`
+:   Optional: Force the command to run with no user prompts.
+
+`-q`
+:   Optional: Do not show the message of the day or update reminders.
+
+`-y`
+:   Optional: Refresh the cluster master and reload worker nodes with no user prompts.
+
+**Example**:
+```sh
+ cluster master private-service-endpoint disable --cluster my_cluster
+```
+{: pre}
+
 ### ` cluster master private-service-endpoint enable`
 {: #cs_cluster_master_pse_enable}
 
