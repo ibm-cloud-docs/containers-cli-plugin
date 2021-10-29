@@ -1,0 +1,12 @@
+
+{:navgroup: .navgroup}
+{:topicgroup: .topicgroup}
+
+{: .toc subcollection="containers-cli-plugin" audience="compute" arm="1680717" href="/docs/containers/containers-kubernetes-service-cli" path="containers-cli-plugin"}
+IBM Cloud Kubernetes Service
+
+    {: .navgroup id="reference"}
+    {: .topicgroup}
+    CLI plug-in reference
+        cli-ks-plugin.md
+    {: .navgroup-end}
