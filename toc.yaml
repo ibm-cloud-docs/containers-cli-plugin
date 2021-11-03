@@ -1,0 +1,13 @@
+toc:
+  properties:
+    subcollection: containers-cli-plugin
+    audience: compute
+    href: /docs/containers/containers-kubernetes-service-cli
+    path: containers-cli-plugin
+    label: IBM Cloud Kubernetes Service CLI
+
+  entries: 
+  - navgroup: 
+    id: reference
+    topics:
+    - cli-ks-plugin.md
