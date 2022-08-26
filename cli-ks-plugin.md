@@ -2,7 +2,7 @@
 
 copyright:
   years: 2014, 2022
-lastupdated: "2022-08-02"
+lastupdated: "2022-08-26"
 
 keywords: kubernetes
 
@@ -10,6 +10,7 @@ subcollection: containers
 
 
 ---
+
 
 
 {{site.data.keyword.attribute-definition-list}}
@@ -29,6 +30,7 @@ In the command line, you are notified when updates to the `ibmcloud` CLI and plu
 
 Looking for `ibmcloud cr` commands? See the [{{site.data.keyword.registrylong_notm}} CLI reference](/docs/Registry?topic=container-registry-cli-plugin-containerregcli). Looking for `kubectl` commands? See the [Kubernetes documentation](https://kubectl.docs.kubernetes.io/){: external}.
 {: tip}
+
 
 ## {{site.data.keyword.containerlong_notm}} commands
 {: #cli_commands}
@@ -851,6 +853,11 @@ ibmcloud ks cluster create classic [--hardware HARDWARE] --zone ZONE --flavor FL
 
 `--gateway-enabled`
 :    Create a cluster with a `gateway` worker pool of two gateway worker nodes that are connected to public and private VLANs to provide limited public access, and a `compute` worker pool of compute worker nodes that are connected to the private VLAN only. You can specify the number of compute nodes that are created in the `--workers` option. Note that you can later resize both the `compute` and `gateway` worker nodes by using the `ibmcloud ks worker-pool resize` command. For more information about gateway-enabled clusters, see [Using a gateway-enabled cluster](/docs/containers?topic=containers-plan_basics#gateway).
+
+Gateway-enabled clusters are deprecated and become unsupported soon. If you have a gateway-enabled cluster, plan to create a new cluster before support ends. If you need similar functionality to gateway-enabled clusters, consider creating a cluster on VPC infrastructure. For more information, see [Understanding network basics of VPC clusters](/docs/containers?topic=containers-plan_vpc_basics). To get started creating a VPC cluster, see [Creating a standard VPC cluster](/docs/containers?topic=containers-clusters#clusters_vpcg2).
+{: deprecated}
+
+
 
 `--private-service-endpoint`
 :    **Standard clusters in [accounts that are enabled with VRF and service endpoints](/docs/account?topic=account-vrf-service-endpoint)**: Enable the [private cloud service endpoint](/docs/containers?topic=containers-plan_basics#workeruser-master) so that your Kubernetes master and the worker nodes communicate over the private VLAN. In addition, you can choose to enable the public cloud service endpoint by using the `--public-service-endpoint` flag to access your cluster over the internet. If you enable the private cloud service endpoint only, you must be connected to the private VLAN to communicate with your Kubernetes master. After you enable a private cloud service endpoint, you can't later disable it.
@@ -4117,6 +4124,104 @@ ibmcloud ks ingress alb get --alb public-cr18a61a63a6a94b658596aa93a087aaa9-alb1
 ```
 {: pre}
 
+### `ibmcloud ks ingress alb health-checker disable`
+{: #cs_alb_healthchecker_disable}
+
+Disable the health checker for an Ingress ALB in a cluster.
+{: shortdesc}
+
+```sh
+ibmcloud ks ingress alb health-checker disable --cluster CLUSTER [-q]
+```
+{: pre}
+
+**Supported infrastructure provider**:
+* Classic
+* VPC
+
+**Minimum required permissions**: **Editor** platform access role for the cluster in {{site.data.keyword.containerlong_notm}}
+
+**Command options**:
+
+`-c, --cluster CLUSTER`
+:    The name or ID of the cluster.
+
+`-q`
+:    Optional: Do not show the message of the day or update reminders.
+
+
+**Example**:
+```sh
+ibmcloud ks ingress alb health-checker disable --cluster mycluster
+```
+{: pre}
+
+### `ibmcloud ks ingress alb health-checker enable`
+{: #cs_alb_healthchecker_enable}
+
+Enable the health checker for an Ingress ALB in a cluster.
+{: shortdesc}
+
+```sh
+ibmcloud ks ingress alb health-checker enable --cluster CLUSTER [-q]
+```
+{: pre}
+
+**Supported infrastructure provider**:
+* Classic
+* VPC
+
+**Minimum required permissions**: **Editor** platform access role for the cluster in {{site.data.keyword.containerlong_notm}}
+
+**Command options**:
+
+`-c, --cluster CLUSTER`
+:    The name or ID of the cluster.
+
+`-q`
+:    Optional: Do not show the message of the day or update reminders.
+
+
+**Example**:
+```sh
+ibmcloud ks ingress alb health-checker enable --cluster mycluster
+```
+{: pre}
+
+### `ibmcloud ks ingress alb health-checker get`
+{: #cs_alb_healthchecker_get}
+
+View the details of the health checker for an Ingress ALB in a cluster.
+{: shortdesc}
+
+```sh
+ibmcloud ks ingress alb health-checker get --cluster CLUSTER [--output OUTPUT] [-q]
+```
+{: pre}
+
+**Supported infrastructure provider**:
+* Classic
+* VPC
+
+**Minimum required permissions**: **Viewer** platform access role for the cluster in {{site.data.keyword.containerlong_notm}}
+
+**Command options**:
+
+`-c, --cluster CLUSTER`
+:    The name or ID of the cluster.
+
+`--output json`
+:    Optional: Prints the command output in JSON format.
+
+`-q`
+:    Optional: Do not show the message of the day or update reminders.
+
+
+**Example**:
+```sh
+ibmcloud ks ingress alb health-checker get --cluster mycluster
+```
+{: pre}
 
 ### `ibmcloud ks ingress alb ls`
 {: #cs_albs}
@@ -6546,8 +6651,6 @@ If you use the {{site.data.keyword.block_storage_is_short}} or cluster autoscale
 
 Before you use this command, make sure that the user who runs this command has the required [{{site.data.keyword.containerlong_notm}} and IBM Cloud infrastructure permissions](/docs/containers?topic=containers-access_reference#cluster_create_permissions). Target the resource group and region that you want to set the API key for. When the API key is reset, the previous API key that was used, if any, for the region and resource group is now obsolete. You can then delete the old API key from your list of API keys. Before you reset the API key, check whether you have other services that use the existing API key, such as a [key management service (KMS) provider](/docs/containers?topic=containers-encryption#keyprotect) or the [default {{site.data.keyword.cloudcerts_long}} service instance for your cluster](/docs/containers?topic=containers-ingress-types#manage_certs).
 {: important}
-
-
 
 ```sh
 ibmcloud ks api-key reset --region REGION [-q]
