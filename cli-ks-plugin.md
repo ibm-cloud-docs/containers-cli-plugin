@@ -2,7 +2,7 @@
 
 copyright:
   years: 2014, 2022
-lastupdated: "2022-12-12"
+lastupdated: "2022-12-16"
 
 keywords: kubernetes
 
@@ -1964,7 +1964,8 @@ ibmcloud ks cluster subnet add --cluster CLUSTER --subnet-id SUBNET [-q]
 ```
 {: pre}
 
-**Supported infrastructure provider**: Classic
+Supported infrastructure providers
+:   Classic
 
 **Minimum required permissions**: **Operator** platform access role for the cluster in {{site.data.keyword.containerlong_notm}}
 
@@ -2001,7 +2002,8 @@ ibmcloud ks cluster subnet create --cluster CLUSTER --size SIZE --vlan VLAN_ID [
 ```
 {: pre}
 
-**Supported infrastructure provider**: Classic
+Supported infrastructure providers
+:   Classic
 
 **Minimum required permissions**: **Operator** platform access role for the cluster in {{site.data.keyword.containerlong_notm}}
 
@@ -2039,7 +2041,8 @@ ibmcloud ks cluster subnet detach --cluster CLUSTER --subnet-id SUBNET_ID [-f] [
 ```
 {: pre}
 
-**Supported infrastructure provider**: Classic
+Supported infrastructure providers
+:   Classic
 
 **Minimum required permissions**: **Operator** platform access role for the cluster in {{site.data.keyword.containerlong_notm}}
 
@@ -2082,7 +2085,8 @@ ibmcloud ks cluster user-subnet add --cluster CLUSTER --subnet-cidr SUBNET_CIDR 
 ```
 {: pre}
 
-**Supported infrastructure provider**: Classic
+Supported infrastructure providers
+:   Classic
 
 **Minimum required permissions**: **Operator** platform access role for the cluster in {{site.data.keyword.containerlong_notm}}
 
@@ -2119,7 +2123,8 @@ ibmcloud ks cluster user-subnet rm --cluster CLUSTER --subnet-cidr SUBNET_CIDR -
 ```
 {: pre}
 
-**Supported infrastructure provider**: Classic
+Supported infrastructure providers
+:   Classic
 
 **Minimum required permissions**: **Operator** platform access role for the cluster in {{site.data.keyword.containerlong_notm}}
 
@@ -3668,7 +3673,8 @@ ibmcloud ks zone network-set --zone ZONE --cluster CLUSTER  --private-vlan PRIVA
 ```
 {: pre}
 
-**Supported infrastructure provider**: Classic
+Supported infrastructure providers
+:   Classic
 
 **Minimum required permissions**: **Operator** platform access role for the cluster in {{site.data.keyword.containerlong_notm}}
 
@@ -3903,7 +3909,8 @@ ibmcloud ks ingress alb create classic --cluster CLUSTER --type (PUBLIC|PRIVATE)
 ```
 {: pre}
 
-**Supported infrastructure provider**: Classic
+Supported infrastructure providers
+:   Classic
 
 **Minimum required permissions**: **Editor** platform access role for the cluster in {{site.data.keyword.containerlong_notm}}
 
@@ -5987,7 +5994,8 @@ ibmcloud ks nlb-dns add --cluster CLUSTER --ip NLB_IP [--ip NLB2_IP2 --ip NLB3_I
 ```
 {: pre}
 
-**Supported infrastructure provider**: Classic
+Supported infrastructure providers
+:   Classic
 
 **Minimum required permissions**: **Editor** platform access role for the cluster in {{site.data.keyword.containerlong_notm}}
 
@@ -6027,7 +6035,8 @@ ibmcloud ks nlb-dns create classic --cluster CLUSTER --ip NLB_IP [--ip NLB2_IP -
 ```
 {: pre}
 
-**Supported infrastructure provider**: Classic
+Supported infrastructure providers
+:   Classic
 
 **Minimum required permissions**: **Editor** platform access role for the cluster in {{site.data.keyword.containerlong_notm}}
 
@@ -6199,7 +6208,8 @@ ibmcloud ks nlb-dns monitor configure --cluster CLUSTER --nlb-host SUBDOMAIN [--
 ```
 {: pre}
 
-**Supported infrastructure provider**: Classic
+Supported infrastructure providers
+:   Classic
 
 **Minimum required permissions**: **Editor** platform access role for the cluster in {{site.data.keyword.containerlong_notm}}
 
@@ -6239,7 +6249,7 @@ ibmcloud ks nlb-dns monitor configure --cluster CLUSTER --nlb-host SUBDOMAIN [--
 :    The port number to connect to for the health check. When `type` is `TCP`, this parameter is required. When `type` is `HTTP` or `HTTPS`, define the port only if you use a port other than 80 for HTTP or 443 for HTTPS. Default for TCP: `0`. Default for HTTP: `80`. Default for HTTPS: `443`.
 
 `--header HEADER`
-:    Required when `type` is `HTTP` or `HTTPS`: HTTP request headers to send in the health check, such as a Host header. The User-Agent header can't be overridden. This option is valid only for type 'HTTP' or 'HTTPS'. To add more than one header to the requests, specify this option multiple times. This option accepts values in the following format: '--header Header-Name=value'. When updating a monitor, the existing headers are replaced by the ones you specify. To delete all existing headers specify the option with an empty value '--header ""'.
+:    Required when `type` is `HTTP` or `HTTPS`: HTTP request headers to send in the health check, such as a Host header. The User-Agent header can't be overridden. This option is valid only for type 'HTTP' or 'HTTPS'. To add more than one header to the requests, specify this option multiple times. This option accepts values in the following format: `--header Header-Name=value`. When updating a monitor, the existing headers are replaced by the ones you specify. To delete all existing headers specify the option with an empty value `--header ""`.
 
 `--expected-body BODY STRING`
 :    When `type` is `HTTP` or `HTTPS`: A case-insensitive substring that the health check looks for in the response body. If this string is not found, the IP is considered unhealthy.
@@ -6277,7 +6287,8 @@ ibmcloud ks nlb-dns monitor disable --cluster CLUSTER --nlb-host SUBDOMAIN [--ou
 ```
 {: pre}
 
-**Supported infrastructure provider**: Classic
+Supported infrastructure providers
+:   Classic
 
 **Minimum required permissions**: **Editor** platform access role for the cluster in {{site.data.keyword.containerlong_notm}}
 
@@ -6317,7 +6328,8 @@ ibmcloud ks nlb-dns monitor enable --cluster CLUSTER --nlb-host SUBDOMAIN [--out
 ```
 {: pre}
 
-**Supported infrastructure provider**: Classic
+Supported infrastructure providers
+:   Classic
 
 **Minimum required permissions**: **Editor** platform access role for the cluster in {{site.data.keyword.containerlong_notm}}
 
@@ -6354,7 +6366,8 @@ ibmcloud ks nlb-dns monitor get --cluster CLUSTER --nlb-host SUBDOMAIN [--output
 ```
 {: pre}
 
-**Supported infrastructure provider**: Classic
+Supported infrastructure providers
+:   Classic
 
 **Minimum required permissions**: **Editor** platform access role for the cluster in {{site.data.keyword.containerlong_notm}}
 
@@ -6391,7 +6404,8 @@ ibmcloud ks nlb-dns monitor ls --cluster CLUSTER [--output json] [-q]
 ```
 {: pre}
 
-**Supported infrastructure provider**: Classic
+Supported infrastructure providers
+:   Classic
 
 **Minimum required permissions**: **Editor** platform access role for the cluster in {{site.data.keyword.containerlong_notm}}
 
@@ -6465,7 +6479,8 @@ ibmcloud ks nlb-dns rm classic --cluster CLUSTER --ip IP --nlb-host SUBDOMAIN [-
 ```
 {: pre}
 
-**Supported infrastructure provider**: Classic
+Supported infrastructure providers
+:   Classic
 
 **Minimum required permissions**: **Editor** platform access role for the cluster in {{site.data.keyword.containerlong_notm}}
 
@@ -6776,7 +6791,8 @@ ibmcloud ks credential get --region REGION [-q] [--output json]
 ```
 {: pre}
 
-**Supported infrastructure provider**: Classic
+Supported infrastructure providers
+:   Classic
 
 **Minimum required permissions**: **Viewer** platform access role for the cluster in {{site.data.keyword.containerlong_notm}}
 
@@ -6818,7 +6834,8 @@ ibmcloud ks credential set classic --infrastructure-api-key API_KEY --infrastruc
 ```
 {: pre}
 
-**Supported infrastructure provider**: Classic
+Supported infrastructure providers
+:   Classic
 
 **Minimum required permissions**: **Administrator** platform access role for the cluster in {{site.data.keyword.containerlong_notm}}
 
@@ -6857,7 +6874,8 @@ ibmcloud ks credential unset --region REGION [-q]
 ```
 {: pre}
 
-**Supported infrastructure provider**: Classic
+Supported infrastructure providers
+:   Classic
 
 **Minimum required permissions**: **Administrator** platform access role for the cluster in {{site.data.keyword.containerlong_notm}}
 
@@ -6915,7 +6933,8 @@ ibmcloud ks infra-permissions get --region REGION [--output json] [-q]
 ```
 {: pre}
 
-**Supported infrastructure provider**: Classic
+Supported infrastructure providers
+:   Classic
 
 **Minimum required permissions**: **Viewer** platform access role for the cluster in {{site.data.keyword.containerlong_notm}}
 
@@ -7190,7 +7209,8 @@ ibmcloud ks vlan ls --zone ZONE [--all] [--output json] [-q]
 ```
 {: pre}
 
-**Supported infrastructure provider**: Classic
+Supported infrastructure providers
+:   Classic
 
 **Minimum required permissions**:
 * To view the VLANs that the cluster is connected to in a zone: **Viewer** platform access role for the cluster in {{site.data.keyword.containerlong_notm}}
@@ -7232,7 +7252,8 @@ ibmcloud ks vlan spanning get --region REGION [--output json] [-q]
 ```
 {: pre}
 
-**Supported infrastructure provider**: Classic
+Supported infrastructure providers
+:   Classic
 
 **Minimum required permissions**: **Viewer** platform access role for {{site.data.keyword.containerlong_notm}}
 
