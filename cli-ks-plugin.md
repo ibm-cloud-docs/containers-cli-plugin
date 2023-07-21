@@ -2,7 +2,7 @@
 
 copyright:
   years: 2014, 2023
-lastupdated: "2023-07-17"
+lastupdated: "2023-07-21"
 
 keywords: kubernetes
 
@@ -3040,7 +3040,7 @@ Reload the configurations for a Classic worker node. To reload a worker node in 
 
 A reload can be useful if your worker node experiences problems, such as slow performance or if your worker node is stuck in an unhealthy state. During the reload, your worker node machine is updated with the latest image and data is deleted if not [stored outside the worker node](/docs/containers?topic=containers-storage-plan). The worker node public and private IP address remain the same after the reload operation.
 
-Reloading a worker node applies patch version updates to your worker node, but not major or minor updates. To see the changes from one patch version to the next, review the [Version change log](/docs/containers?topic=containers-changelog) documentation.
+Reloading a worker node applies patch version updates to your worker node, but not major or minor updates. To see the changes from one patch version to the next, review the [Version change log](/docs/containers?topic=containers-cs_versions) documentation.
 {: tip}
 
 Before you reload your worker node, make sure that you have enough capacity in other worker nodes to reschedule the pods on the worker node. Rescheduling pods helps to avoid downtime for your app or data corruption on your worker node.
@@ -3107,7 +3107,7 @@ Delete a worker node and replace it with a new worker node in the same worker po
 
 The replacement worker node is created in the same zone and has the same flavor as the old worker node, but might be assigned new public or private IP addresses. You might replace a worker node if you can't reload or update the worker node, such as if it enters a troubled state.
 
-You can also use this command to update the Kubernetes version of the worker node to match the major and minor version of the Kubernetes master by including the `--update` option. If you don't include the `--update` option, patch version updates are applied to your worker node, but not major or minor updates. To see the changes from one major, minor, or patch version to the next, review the [Version change log](/docs/containers?topic=containers-changelog) documentation. Remember that your worker nodes can be only up to two versions behind the master version (`n-2`).
+You can also use this command to update the Kubernetes version of the worker node to match the major and minor version of the Kubernetes master by including the `--update` option. If you don't include the `--update` option, patch version updates are applied to your worker node, but not major or minor updates. To see the changes from one major, minor, or patch version to the next, review the [Version change log](/docs/containers?topic=containers-cs_versions) documentation. Remember that your worker nodes can be only up to two versions behind the master version (`n-2`).
 
 When you replace a worker node, keep in mind the following considerations.
 {: important}
@@ -4124,6 +4124,135 @@ View and configure Ingress application load balancers (ALBs).
 
 In CLI version 1.0.157 and later, the `ibmcloud ks alb` category is deprecated, and these commands are now listed in the `ibmcloud ks ingress alb` subcategory. For more information, see the [CLI change log](/docs/containers?topic=containers-cs_cli_changelog#10).
 {: important}
+
+### `ibmcloud ks ingress alb autoscale get`
+{: #cs_alb_autoscale_get}
+
+[Virtual Private Cloud]{: tag-vpc} [Classic infrastructure]{: tag-classic-inf}
+
+Get the details and status of an Ingress ALB autoscaling configuration.
+{: shortdesc}
+
+```sh
+ibmcloud ks ingress alb autoscale get --alb ALB --cluster CLUSTER [--output OUTPUT] [-q]
+```
+{: pre}
+
+Minimum required permissions
+:   **Editor** platform access role for the cluster in {{site.data.keyword.containerlong_notm}}
+
+**Command options**:
+
+`--alb ALB`
+:    Required: The name or ID of the ALB to configure autoscaling on.
+
+`-c, --cluster CLUSTER`
+:    Required: The name or ID of the cluster.
+
+`-q`
+:    Optional: Do not show the message of the day or update reminders.
+
+`--output json`
+:    Optional: Prints the command output in JSON format.
+
+#### Example `ingress alb autoscale get` command
+{: #ingress-alb-autoscale-get-example}
+
+```sh
+ibmcloud ks ingress alb autoscale get --alb myalb123 --cluster mycluster 
+``` 
+{: pre}
+
+
+### `ibmcloud ks ingress alb autoscale set`
+{: #cs_alb_autoscale_set}
+
+[Virtual Private Cloud]{: tag-vpc} [Classic infrastructure]{: tag-classic-inf}
+
+Configure autoscaling to automatically increase or decrease the number of Ingress ALB pods based on the current load. You can choose to scale pods based on CPU utilization, or you can use custom metrics that you specify. If you base autoscaling configuration on CPU utilization, you specify an average CPU utilization rate as well as a maximum and minimum number of pods to be deployed at any given time. If you choose to specify custom metrics for autoscaling, you pass in a path to a custom metric file. 
+{: shortdesc}
+
+```sh
+ibmcloud ks ingress alb autoscale set --alb ALB --cluster CLUSTER --max-replicas REPLICAS --min-replicas REPLICAS [--output OUTPUT] [-q] (--cpu-average-utilization PERCENT | --custom-metrics-file FILE)
+```
+{: pre}
+
+Minimum required permissions
+:   **Editor** platform access role for the cluster in {{site.data.keyword.containerlong_notm}}
+
+**Command options**:
+
+`--alb ALB`
+:    Required: The name or ID of the ALB to configure autoscaling on.
+
+`-c, --cluster CLUSTER`
+:    Required: The name or ID of the cluster.
+
+
+`--max-replicas REPLICAS`
+:   The maximum number of replicas to deployed at any time. This value is required if you include the `---cpu-average-utilization` option.
+
+`--min-replicas REPLICAS`
+:   The minimum number of replicas to deploy at any time. This value is required if you include the `---cpu-average-utilization` option.
+
+`--cpu-average-utilization PERCENTAGE`
+:   The average utilization threshold used to dynamically calculate the number of replicas. 
+
+`--custom-metrics-file`
+:   The path to the custom metrics file. 
+
+`-q`
+:    Optional: Do not show the message of the day or update reminders.
+
+`--output json`
+:    Optional: Prints the command output in JSON format.
+
+#### Example `ingress alb autoscale set` command
+{: #ingress-alb-autoscale-set-example}
+
+```sh
+ibmcloud ks ingress alb autoscale set --alb myalb123 --cluster mycluster --max-replicas 5 --min-replicas 2 --cpu-average-utilization 5
+``` 
+{: pre}
+
+
+### `ibmcloud ks ingress alb autoscale unset`
+{: #cs_alb_autoscale_unset}
+
+[Virtual Private Cloud]{: tag-vpc} [Classic infrastructure]{: tag-classic-inf}
+
+Remove autoscaling from your Ingress ALBs by deleting the autoscaling configuration.
+{: shortdesc}
+
+```sh
+ibmcloud ks ingress alb autoscale unset --alb ALB --cluster CLUSTER [--output OUTPUT] [-q]
+```
+{: pre}
+
+Minimum required permissions
+:   **Editor** platform access role for the cluster in {{site.data.keyword.containerlong_notm}}
+
+**Command options**:
+
+`--alb ALB`
+:    Required: The name or ID of the ALB to configure autoscaling on.
+
+`-c, --cluster CLUSTER`
+:    Required: The name or ID of the cluster.
+
+`--output json`
+:    Optional: Prints the command output in JSON format.
+
+`-q`
+:    Optional: Do not show the message of the day or update reminders.
+
+#### Example `ingress alb autoscale unset` command
+{: #ingress-alb-autoscale-unset-example}
+
+```sh
+ibmcloud ks ingress alb autoscale unset --alb myalb123 --cluster mycluster 
+``` 
+{: pre}
 
 ### `ibmcloud ks ingress alb autoupdate disable`
 {: #cs_alb_autoupdate_disable}
