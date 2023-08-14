@@ -2,7 +2,7 @@
 
 copyright:
   years: 2014, 2023
-lastupdated: "2023-07-31"
+lastupdated: "2023-08-14"
 
 keywords: kubernetes
 
@@ -536,7 +536,7 @@ Update an installed add-on.
 {: shortdesc}
 
 ```sh
-ibmcloud ks cluster addon update --addon ADD-ON_NAME --cluster CLUSTER [-f] [-q] [--version VERSION] [-y]
+ibmcloud ks cluster addon update ADD-ON_NAME --cluster CLUSTER [-f] [-q] [--version VERSION] [-y]
 ```
 {: pre}
 
@@ -544,9 +544,6 @@ Minimum required permissions
 :   None
 
 **Command options**:
-
-`--addon ADD-ON_NAME`
-:    Required: Specify an add-on name, such as `istio`, to update. To see installed add-ons, run `ibmcloud ks cluster addon ls --cluster <cluster_name_or_ID>`.
 
 `-c, --cluster CLUSTER`
 :    Required: The name or ID of the cluster.
@@ -817,7 +814,7 @@ Create a cluster with worker nodes on classic infrastructure.
 {: shortdesc}
 
 ```sh
-ibmcloud ks cluster create classic [--hardware HARDWARE] --zone ZONE --flavor FLAVOR --name NAME  [--operating-system UBUNTU_20_64|UBUNTU_18_64] [--version MAJOR.MINOR.PATCH] [--no-subnet] [--sm-group GROUP] [--sm-instance INSTANCE] [--private-vlan PRIVATE_VLAN] [--public-vlan PUBLIC_VLAN] [--private-only] [--gateway-enabled] [--private-service-endpoint] [--public-service-endpoint] [--workers WORKER] [--disable-disk-encrypt] [--pod-subnet SUBNET] [--service-subnet SUBNET] [--skip-advance-permissions-check] [-q]
+ibmcloud ks cluster create classic [--hardware HARDWARE] --zone ZONE --flavor FLAVOR --name NAME  [--operating-system UBUNTU_20_64] [--version MAJOR.MINOR.PATCH] [--no-subnet] [--sm-group GROUP] [--sm-instance INSTANCE] [--private-vlan PRIVATE_VLAN] [--public-vlan PUBLIC_VLAN] [--private-only] [--gateway-enabled] [--private-service-endpoint] [--public-service-endpoint] [--workers WORKER] [--disable-disk-encrypt] [--pod-subnet SUBNET] [--service-subnet SUBNET] [--skip-advance-permissions-check] [-q]
 ```
 {: pre}
 
@@ -957,7 +954,7 @@ VPC Gen 2 cluster flavors with instance storage are available for allowlisted ac
 
 
 ```sh
-ibmcloud ks cluster create vpc-gen2 --name NAME --zone ZONE --vpc-id VPC_ID --subnet-id VPC_SUBNET_ID --flavor WORKER_FLAVOR [--cluster-security-group GROUP_ID] [--operating-system UBUNTU_20_64|UBUNTU_18_64] [--version MAJOR.MINOR.PATCH] [--workers NUMBER_WORKERS_PER_ZONE]  [--disable-public-service-endpoint] [--pod-subnet SUBNET] [--service-subnet SUBNET] [--kms-account-id ID] [--kms-instance KMS_INSTANCE_ID] [--crk ROOT_KEY_ID][--skip-advance-permissions-check] [--sm-group GROUP] [--sm-instance INSTANCE] [-q] [--secondary-storage STORAGE]
+ibmcloud ks cluster create vpc-gen2 --name NAME --zone ZONE --vpc-id VPC_ID --subnet-id VPC_SUBNET_ID --flavor WORKER_FLAVOR [--cluster-security-group GROUP_ID] [--operating-system UBUNTU_20_64] [--version MAJOR.MINOR.PATCH] [--workers NUMBER_WORKERS_PER_ZONE]  [--disable-public-service-endpoint] [--pod-subnet SUBNET] [--service-subnet SUBNET] [--kms-account-id ID] [--kms-instance KMS_INSTANCE_ID] [--crk ROOT_KEY_ID][--skip-advance-permissions-check] [--sm-group GROUP] [--sm-instance INSTANCE] [-q] [--secondary-storage STORAGE]
 ```
 {: pre}
 
@@ -3116,7 +3113,7 @@ To update {{site.data.keyword.satelliteshort}} worker nodes, see [Updating hosts
 {: tip}
 
 * **Multiple worker nodes are replaced concurrently**: If you replace multiple worker nodes at the same time, they are deleted and replaced concurrently, not one by one. Make sure that you have enough capacity in your cluster to reschedule your workloads before you replace worker nodes.
-* **Node-level customizations are not preserved**: Any custom labels or taints that you applied at the individual worker node level are not applied to the replacement worker node. Instead, apply [labels](/docs/containers?topic=containers-add_workers#worker_pool_labels) or [taints](#worker_pool_taint) at the worker pool level so that the replacement worker node gets these attributes.
+* **Node-level customizations are not preserved**: Any custom labels or taints that you applied at the individual worker node level are not applied to the replacement worker node. Instead, apply [labels](/docs/containers?topic=containers-worker-tag-label) or [taints](#worker_pool_taint) at the worker pool level so that the replacement worker node gets these attributes.
 * **Automatic rebalancing**: A replacement worker node is not created if the worker pool does not have [automatic rebalancing enabled](/docs/containers?topic=containers-auto-rebalance-off).
 
 Before you begin, make sure that your cluster has enough other worker nodes so that your pods can be rescheduled and continue to run.
