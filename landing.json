@@ -1,9 +1,9 @@
 {
     "title": "IBM Cloud Kubernetes CLI docs",
-    "lastupdated": "2021-11-04",
+    "lastupdated": "2023-12-05",
     "introduction": "Explore the capabilities of IBM Cloud Kubernetes service. Learn more about how Kubernetes works and the benefits of using the service. ",
     "section_devtools": {
-      "api": "/apidocs/containers", 
+      "api": "/apidocs/kubernetes/containers-v1-v2", 
       "cli": "/docs/containers?topic=containers-kubernetes-service-cli"
     },
     "section_learn": {
